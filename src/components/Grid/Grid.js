@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react'
 import classes from './Grid.scss'
 import Cell from '../Cell'
 import Marker from '../Marker'
+import PointsGrid from '../PointsGrid'
 
 class Grid extends Component {
   constructor (props) {
@@ -10,6 +11,21 @@ class Grid extends Component {
 
     this.renderCells = this.renderCells.bind(this)
     this.renderMarker = this.renderMarker.bind(this)
+
+    this.state = {
+      width: '',
+      height: ''
+    }
+  }
+
+  componentDidMount () {
+    // Wait for childer to call reflow
+    setTimeout(() => {
+      this.setState({
+        width: this.node.offsetWidth,
+        height: this.node.offsetHeight
+      })
+    }, 100)
   }
 
   renderMarker (index) {
@@ -33,9 +49,16 @@ class Grid extends Component {
   }
 
   render () {
+    const { width, height } = this.state
+
     return (
-      <div className={classes.container}>
-        {this.renderCells()}
+      <div ref={(e) => this.node = e} className={classes.container}>
+        <div className={classes.cellContainer}>
+          {this.renderCells()}
+        </div>
+        {width && height &&
+          <PointsGrid width={width} height={height} />
+        }
       </div>
     )
   }

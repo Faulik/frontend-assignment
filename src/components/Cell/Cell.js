@@ -26,7 +26,7 @@ class Cell extends Component {
     const { children, connectDropTarget } = this.props
 
     return connectDropTarget(
-      <div className={'lol ' + classes.container} >
+      <div className={classes.container} >
         {children}
       </div>
 
