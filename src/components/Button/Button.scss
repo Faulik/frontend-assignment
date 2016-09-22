@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button {
+  width: 50%;
+}
+
+.success {
+  background-color: lightgreen;
+}
+
+.failed {
+  background-color: lightcoral;
+}

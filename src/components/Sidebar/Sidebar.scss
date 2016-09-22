@@ -1,0 +1,14 @@
+.container {
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid lightgrey 1px;
+}
+
+.container > div {
+  height: 20xp;
+  padding: 5px;
+  margin-bottom: 5px;
+}

@@ -59,6 +59,7 @@ let render = (routerKey = null) => {
 if (__DEV__ && module.hot) {
   const renderApp = render
   const renderError = (error) => {
+    console.log(error)
     const RedBox = require('redbox-react')
 
     ReactDOM.render(<RedBox error={error} />, MOUNT_NODE)
