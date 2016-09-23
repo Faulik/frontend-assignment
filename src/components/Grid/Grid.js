@@ -50,6 +50,7 @@ class Grid extends Component {
 
   render () {
     const { width, height } = this.state
+    const { markers } = this.props
 
     return (
       <div ref={(e) => this.node = e} className={classes.container}>
@@ -57,7 +58,7 @@ class Grid extends Component {
           {this.renderCells()}
         </div>
         {width && height &&
-          <PointsGrid width={width} height={height} />
+          <PointsGrid width={width} height={height} markers={markers} />
         }
       </div>
     )

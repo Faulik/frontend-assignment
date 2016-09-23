@@ -12,7 +12,7 @@ class PointsGrid extends Component {
   }
 
   renderPoints () {
-    const { width, height } = this.props
+    const { width, height, markers } = this.props
 
     const xOffset = Math.floor(width / 20)
     const xScale = d3.scaleLinear()
@@ -25,10 +25,12 @@ class PointsGrid extends Component {
       .range([0 + yOffset, height - yOffset - 10])
 
     return Array.apply(null, Array(100)).map((e, i) => {
+      const hasItem = markers.some((e) => e.x + e.y * 10 === i)
       const circleProps = {
         cx: xScale(i % 10),
         cy: yScale(Math.floor(i / 10)) - 10,
-        r: 3,
+        r: hasItem ? 6 : 3,
+        fill: hasItem ? 'green' : 'grey',
         key: i
       }
 
@@ -58,6 +60,7 @@ class PointsGrid extends Component {
 }
 
 PointsGrid.propTypes = {
+  markers: PropTypes.array.isRequired,
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired
 }
